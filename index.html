@@ -49,15 +49,13 @@
             .then( response => response.json())
             .then(data => {
                 console.log(data);
-                console.log();
+                document.getElementById("image").src=(data.sprites.front_default);
                 document.getElementById("name").innerText=(data.forms[0].name);
                 document.getElementById("ability1").innerText=(data.abilities[0].ability.name);
                 document.getElementById("ability2").innerText=(data.abilities[1].ability.name);
-                document.getElementById("ability3").innerText=(data.abilities[2].ability.name);
                 document.getElementById("weight").innerText=(data.weight);
                 document.getElementById("height").innerText=(data.height);
                 document.getElementById("type").innerText=(data.types[0].type.name);
-                document.getElementById("type2").innerText=(data.types[1].type.name);
                 })
                 
                 document.getElementById("type2").innerText="None";
@@ -73,29 +71,24 @@
             .then( response => response.json())
             .then(
                 data => {
-                    console.log(data);
+                    // console.log(data);
+                    document.getElementById("image").src=(data.sprites.front_default);
                     document.getElementById("name").innerText=(data.forms[0].name);
                     document.getElementById("ability1").innerText=(data.abilities[0].ability.name);
                     document.getElementById("ability2").innerText=(data.abilities[1].ability.name);
                     document.getElementById("weight").innerText=(data.weight);
                     document.getElementById("height").innerText=(data.height);
                     document.getElementById("type").innerText=(data.types[0].type.name);
-                    document.getElementById("type2").innerText=(data.types[1].type.name);
-                    document.getElementById("ability3").innerText=(data.abilities[2].ability.name);
                     document.getElementById("pokename").value="";
                 })
                 .catch(error => {
-                    if (error == "TypeError: Cannot read properties of undefined (reading \'type\')") {
-                        document.getElementById("pokename").value="";
-                    }
-                    else {
-                        document.getElementById("pokename").value="";
-                        alert("Invalid Name!");
-                    }
-                    
-                    // alert(error);
-                    document.getElementById("type2").innerText="None";
-                    document.getElementById("ability3").innerText="None";
+                if (error == "TypeError: Cannot read properties of undefined (reading \'type\')") {
+                    document.getElementById("pokename").value="";
+                }
+                else {
+                    document.getElementById("pokename").value="";
+                    alert("Invalid Name!");
+                }
             });
         }
     </script>
@@ -187,6 +180,9 @@
         Pokemon Information :- 
     </h2>
     <br>
+    <div>
+        <img id="image" src="" alt="" width="220px" style="border: 1px solid black;">
+    </div> <br>
     <table>
         <tr>
             <td>
@@ -204,13 +200,6 @@
                     <p id="type"> </p>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    Type 2 ->
-                </td>
-                <td>
-                    <p id="type2"> </p>
-                </td>
             </tr>
             <tr>
                 <td>
@@ -226,14 +215,6 @@
                 </td>
                 <td>
                     <p id="ability2"> </p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Ability 3 ->
-                </td>
-                <td>
-                    <p id="ability3"> </p>
                 </td>
             </tr>
             <tr>
